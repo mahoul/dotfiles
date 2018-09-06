@@ -10,6 +10,10 @@ Favorites=New Profile.profile
 
 [MainWindow]
 Height 1080=1015
+MenuBar=Disabled
 State=AAAA/wAAAAD9AAAAAAAAB4AAAAPbAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 Width 1920=1920
+
+[TabBar]
+TabBarPosition=Top
