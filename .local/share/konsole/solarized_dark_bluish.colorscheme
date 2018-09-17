@@ -8,55 +8,55 @@ Color=0,43,54
 Color=7,54,66
 
 [Color0]
-Color=7,54,66
+Color=5,64,76
 
 [Color0Faint]
-Color=6,48,59
+Color=5,64,76
 
 [Color0Intense]
-Color=0,43,54
+Color=6,81,96
 
 [Color1]
 Color=220,50,47
 
 [Color1Faint]
-Color=147,33,31
+Color=220,50,47
 
 [Color1Intense]
-Color=203,75,22
+Color=231,81,81
 
 [Color2]
-Color=133,153,0
+Color=92,183,64
 
 [Color2Faint]
-Color=94,106,0
+Color=92,183,64
 
 [Color2Intense]
-Color=88,110,117
+Color=148,230,113
 
 [Color3]
-Color=181,137,0
+Color=234,234,93
 
 [Color3Faint]
-Color=138,103,0
+Color=234,234,93
 
 [Color3Intense]
-Color=101,123,131
+Color=254,254,130
 
 [Color4]
 Color=38,139,210
 
 [Color4Faint]
-Color=20,77,115
+Color=38,139,210
 
 [Color4Intense]
-Color=131,148,150
+Color=41,155,230
 
 [Color5]
 Color=211,54,130
 
 [Color5Faint]
-Color=120,30,75
+Color=211,54,130
 
 [Color5Intense]
 Color=108,113,196
@@ -65,16 +65,16 @@ Color=108,113,196
 Color=42,161,152
 
 [Color6Faint]
-Color=24,94,88
+Color=42,161,152
 
 [Color6Intense]
-Color=147,161,161
+Color=31,180,168
 
 [Color7]
 Color=238,232,213
 
 [Color7Faint]
-Color=171,167,154
+Color=238,232,213
 
 [Color7Intense]
 Color=253,246,227
@@ -90,6 +90,6 @@ Color=147,161,161
 
 [General]
 Blur=true
-Description=Solarized
+Description=Mio_pastell
 Opacity=0.85
 Wallpaper=
