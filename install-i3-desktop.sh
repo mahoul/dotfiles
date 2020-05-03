@@ -83,6 +83,7 @@ sudo make install
 
 # Get dotfiles and rsync them to the home folder
 #git clone https://github.com/mahoul/dotfiles.git /tmp/dotfiles
+cd -
 rsync -avP --exclude $0 --exclude .git --exclude README.md ./ ~/
 
 # Disable desktop management for gnome-flashback and only enable 
@@ -99,10 +100,12 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Darker'
 # Set JetBrains Mono as default monospace font
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono Medium 11'
 
+# Remove header bar for gnome-terminal and toolbar
+gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
+gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
+
 # Restore gnome-terminal profiles
-dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ < ~/.config/gnome-terminal-profiles/gnome-terminal.default.profile
-dconf load /org/gnome/terminal/legacy/profiles:/:d481bf68-8d93-4ff6-8101-f0ab26181db9/ < ~/.config/gnome-terminal-profiles/gnome-terminal.gruvbox.profile
-dconf load /org/gnome/terminal/legacy/profiles:/:51a0063f-2172-45c8-825f-7da4c5c4445d/ < ~/.config/gnome-terminal-profiles/gnome-terminal.gruvbox-dark.profile
+dconf load /org/gnome/terminal/legacy/profiles:/ < ~/.config/gnome-terminal-profiles
 
 # Restart gdm
 #sudo systemctl restart gdm
