@@ -32,30 +32,30 @@ vim"
 sudo yum install -y $POWERLINE_PKGS
 
 # Enable powerline on bash
-if ! grep -q powerline ~/.bashrc; then
-	cat <<-'EOF' >> ~/.bashrc
-	# User specific aliases and functions
-	if [ -f `which powerline-daemon` ]; then
-		powerline-daemon -q
-		POWERLINE_BASH_CONTINUATION=1
-		POWERLINE_BASH_SELECT=1
-		. /usr/share/powerline/bash/powerline.sh
-	fi
-	EOF
-fi
+#if ! grep -q powerline ~/.bashrc; then
+#	cat <<-'EOF' >> ~/.bashrc
+#	# User specific aliases and functions
+#	if [ -f `which powerline-daemon` ]; then
+#		powerline-daemon -q
+#		POWERLINE_BASH_CONTINUATION=1
+#		POWERLINE_BASH_SELECT=1
+#		. /usr/share/powerline/bash/powerline.sh
+#	fi
+#	EOF
+#fi
 
 # Enable powerline on vim
-if ! grep -q powerline ~/.vimrc; then
-	cat <<-'EOF' >> ~/.vimrc
-	set laststatus=2 " Always display the statusline in all windows
-	set showtabline=2 " Always display the tabline, even if there is only one tab
-	set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-
-	python3 from powerline.vim import setup as powerline_setup
-	python3 powerline_setup()
-	python3 del powerline_setup
-	EOF
-fi
+#if ! grep -q powerline ~/.vimrc; then
+#	cat <<-'EOF' >> ~/.vimrc
+#	set laststatus=2 " Always display the statusline in all windows
+#	set showtabline=2 " Always display the tabline, even if there is only one tab
+#	set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+#
+#	python3 from powerline.vim import setup as powerline_setup
+#	python3 powerline_setup()
+#	python3 del powerline_setup
+#	EOF
+#fi
 
 # Install Font packages
 sudo yum install -y $FONTS_PKGS
@@ -83,7 +83,7 @@ sudo make install
 
 # Get dotfiles and rsync them to the home folder
 #git clone https://github.com/mahoul/dotfiles.git /tmp/dotfiles
-rsync -avP --exclude $0 --exclude .git --exclude README.md . ~/
+rsync -avP --exclude $0 --exclude .git --exclude README.md ./ ~/
 
 # Disable desktop management for gnome-flashback and only enable 
 # background drawing.
@@ -98,6 +98,11 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Darker'
 
 # Set JetBrains Mono as default monospace font
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono Medium 11'
+
+# Restore gnome-terminal profiles
+dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ < ~/.config/gnome-terminal-profiles/gnome-terminal.default.profile
+dconf load /org/gnome/terminal/legacy/profiles:/:d481bf68-8d93-4ff6-8101-f0ab26181db9/ < ~/.config/gnome-terminal-profiles/gnome-terminal.gruvbox.profile
+dconf load /org/gnome/terminal/legacy/profiles:/:51a0063f-2172-45c8-825f-7da4c5c4445d/ < ~/.config/gnome-terminal-profiles/gnome-terminal.gruvbox-dark.profile
 
 # Restart gdm
 #sudo systemctl restart gdm
