@@ -1,0 +1,4 @@
+i3xrocks.date.format2: + %A %e %B %Y, %H:%M
+
+! vim: ft=xdefaults
+

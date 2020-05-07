@@ -1,0 +1,7 @@
+i3-wm.bar.position:	top
+i3-wm.program.1: nm-applet
+!i3-wm.program.2: pasystray
+
+
+! vim: ft=xdefaults
+

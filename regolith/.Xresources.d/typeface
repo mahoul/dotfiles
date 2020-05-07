@@ -1,0 +1,8 @@
+!i3-wm.font:	pango:Ubuntu Medium 12
+!i3-wm.bar.font: pango:Ubuntu Medium 13
+!i3-wm.bar.font: pango:JetBrains Mono Medium 13, Material Design Icons 13
+!rofi.font: 	Ubuntu Medium 16
+
+
+! vim: ft=xdefaults
+
