@@ -8,10 +8,12 @@ get_required_packages(){
 	dmenu
 	dpkg
 	feh
+	fontawesome-fonts
 	gnome-flashback
 	gnome-font-viewer
 	gucharmap
 	htop
+	i3
 	lsb-release
 	mc
 	mozilla-nss-tools
@@ -184,6 +186,9 @@ install_mattermost_desktop(){
 		sudo mv Mattermost.desktop /usr/local/share/applications/
 	fi
 }
+
+sudo zypper -n addrepo https://download.opensuse.org/repositories/home:sonaj96/openSUSE_Tumbleweed/home:sonaj96.repo
+sudo zypper -n refresh 
 
 # Check if all required packages are installed and 
 # launch installation if any of them is missing.
