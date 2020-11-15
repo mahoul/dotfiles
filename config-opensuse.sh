@@ -17,6 +17,7 @@ get_required_packages(){
 	lsb-release
 	mc
 	mozilla-nss-tools
+	nemo
 	neofetch
 	net-tools-deprecated
 	parcellite
@@ -60,7 +61,7 @@ enable_sudo(){
 	fi
 	
 	if [ ! -s /usr/share/polkit-1/actions/org.opensuse.pkexec.yast2.policy ]; then
-		sudo cat <<-EOF > /usr/share/polkit-1/actions/org.opensuse.pkexec.yast2.policy
+		sudo bash -c "cat >/usr/share/polkit-1/actions/org.opensuse.pkexec.yast2.policy" <<-EOF
 		<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/software/polkit/policyconfig-1.dtd">
 		<policyconfig>
 
@@ -87,7 +88,7 @@ enable_sudo(){
 	fi
 
 	if [ ! -x /usr/local/sbin/yast2_polkit ]; then
-		sudo cat<<-EOF > /usr/local/sbin/yast2_polkit
+		sudo bash -c "cat >/usr/local/sbin/yast2_polkit" <<-EOF
 		#!/bin/bash
 		
 		if [ $(which pkexec) ]; then
@@ -100,7 +101,7 @@ enable_sudo(){
 	fi
 
 	if [ ! -s /usr/share/applications/YaST2.desktop ]; then
-		sudo cat<<-EOF > /usr/share/applications/YaST2.desktop
+		sudo bash -c "cat >/usr/share/applications/YaST2.desktop" <<-EOF
 		[Desktop Entry]
 		X-SuSE-translate=true
 		Type=Application
@@ -117,7 +118,7 @@ enable_sudo(){
 	fi
 
 	if ! sudo test -s /etc/polkit-1/rules.d/10-sudo.rules; then
-		sudo cat<<-EOF > /etc/polkit-1/rules.d/10-sudo.rules
+		sudo bash -c "cat >/etc/polkit-1/rules.d/10-sudo.rules" <<-EOF
 		polkit.addAdminRule(function(action, subject) {
 	        return ["unix-group:wheel"];
 		});
@@ -147,7 +148,7 @@ install_telegram_desktop(){
 
 		[ ! -d /usr/local/share/applications ] && sudo mkdir -p /usr/local/share/applications
 		if [ ! -s /usr/local/share/applications/Telegram_Desktop.desktop ]; then
-			sudo cat<<-EOF > /usr/local/share/applications/Telegram_Desktop.desktop
+			sudo bash -c "cat >/usr/local/share/applications/Telegram_Desktop.desktop" <<-EOF
 			[Desktop Entry]
 			Version=1.0
 			Name=Telegram Desktop
