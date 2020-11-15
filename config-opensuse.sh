@@ -17,6 +17,7 @@ get_required_packages(){
 	mozilla-nss-tools
 	neofetch
 	net-tools-deprecated
+	parcellite
 	pasystray
 	rofi
 	tmux
@@ -133,11 +134,61 @@ path_cert_path_c6(){
 	fi
 }
 
+install_telegram_desktop(){
+
+	if [ ! -d /opt/Telegram ]; then
+
+		curl -L --output /tmp/telegram.tar.xz https://telegram.org/dl/desktop/linux
+		tar -C /opt -xJvf /tmp/telegram.tar.xz
+		rm -f /tmp/telegram.tar.xz	
+
+		[ ! -d /usr/local/share/applications ] && mkdir -p /usr/local/share/applications
+		if [ ! -s /usr/local/share/applications/Telegram_Desktop.desktop ]; then
+			cat<<-EOF > /usr/local/share/applications/Telegram_Desktop.desktop
+			[Desktop Entry]
+			Version=1.0
+			Name=Telegram Desktop
+			Comment=Official desktop version of Telegram messaging app
+			TryExec=/opt/Telegram/Telegram
+			Exec=/opt/Telegram/Telegram -- %u
+			Icon=telegram
+			Terminal=false
+			StartupWMClass=TelegramDesktop
+			Type=Application
+			Categories=Chat;Network;InstantMessaging;Qt;
+			MimeType=x-scheme-handler/tg;
+			Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;
+			X-GNOME-UsesNotifications=true
+			EOF
+		fi
+
+	fi
+
+}
+
+install_mattermost_desktop(){
+	if [ ! -d /opt/mattermost-desktop/ ]; then
+		MATTERMOST_LINUX_URL="https://docs.mattermost.com/install/desktop.html#linux"
+		MATTERMOST_TGZ_URL="$(curl -s -L $MATTERMOST_LINUX_URL | sed -n '/x64.tar.gz/ s/.*href="\([^"]*\).*/\1/p')"
+		MATTERMOST_PKG_NAME=$(basename $MATTERMOST_TGZ_URL)
+
+		mkdir -p /opt/mattermost-desktop
+		wget -P /tmp/ $MATTERMOST_TGZ_URL
+		tar --strip=1 -C /opt/mattermost-desktop -xzf /tmp/$MATTERMOST_PKG_NAME
+		find /opt/mattermost-desktop -type d -exec chmod 0755 {} \;
+		find /opt/mattermost-desktop -type f -exec chmod 0644 {} \;
+		chmod +x /opt/mattermost-desktop/{*.so,*.bin,*.sh,mattermost-desktop}
+		cd /opt/mattermost-desktop
+		./create_desktop_file.sh
+		mv Mattermost.desktop /usr/local/share/applications/
+	fi
+}
+
 # Check if all required packages are installed and 
 # launch installation if any of them is missing.
 #
 if ! missing_pkgs; then
-	get_required_packages | sudo xargs zypper in -y
+	get_required_packages | xargs zypper in -y
 fi
 
 # Disable wayland in gdm if enabled
@@ -154,4 +205,7 @@ fi
 
 enable_sudo
 path_cert_path_c6
+
+install_telegram_desktop
+install_mattermost_desktop
 
