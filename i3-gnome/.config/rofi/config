@@ -1,0 +1,8 @@
+#rofi.theme:                 rofi
+rofi.theme:                 clean
+rofi.font:                  Fira Sans Retina 14
+rofi.show-icons:            true
+rofi.drun-display-format:   {name}
+rofi.window-format:         \ {n} {t}
+rofi.modi:                  window,drun,run,ssh
+

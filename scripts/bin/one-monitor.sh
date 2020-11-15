@@ -1,1 +1,0 @@
-../.screenlayout/one-monitor.sh

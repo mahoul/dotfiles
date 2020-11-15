@@ -1,0 +1,91 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+#order += "ipv6"
+order += "ethernet tun0"
+order += "wireless _first_"
+order += "ethernet _first_"
+#order += "battery all"
+#order += "disk /"
+order += "memory"
+order += "cpu_usage"
+order += "cpu_temperature all"
+#order += "load"
+order += "tztime local"
+order += "read_file hostname"
+
+ethernet tun0 {
+        format_up = " %ip"
+        format_down = ""
+}
+
+wireless _first_ {
+#        format_up = " %ip %quality %essid"
+        format_up = " %ip"
+        format_down = ""
+}
+
+ethernet _first_ {
+#        format_up = " %ip (%speed)"
+        format_up = "  %ip"
+        format_down = ""
+	separator = false
+	separator_block_width = 30
+}
+
+battery all {
+        format = " %status %percentage %remaining"
+	separator = false
+	separator_block_width = 30
+}
+
+disk "/" {
+        format = " %used / %total"
+#	separator = false
+	separator_block_width = 15
+}
+
+memory {
+        format = " %used / %available"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+	separator = false
+	separator_block_width = 30
+}
+
+cpu_usage {
+	format = " %usage  "
+}
+
+cpu_temperature all {
+	format = "   %degrees °C  "
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input"
+	separator = false
+	separator_block_width = 30
+}
+
+load {
+        format = "%1min"
+}
+
+
+tztime local {
+#        format = "%Y-%m-%d %A %H:%M:%S"
+        format = " %a, %d %b %Y   |    %H:%M "
+}
+
+read_file hostname { 
+	format = "   %content   "
+	path = "/etc/hostname"
+
+}
