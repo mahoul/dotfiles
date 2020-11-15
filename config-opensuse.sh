@@ -20,6 +20,7 @@ get_required_packages(){
 	parcellite
 	pasystray
 	rofi
+	stow
 	tmux
 	tmux-powerline
 	xdm-xsession
@@ -29,35 +30,35 @@ get_required_packages(){
 
 missing_pkgs(){
 	for pkg in $(get_required_packages); do
-		rpm -q $pkg &>/dev/null || return 1
+		sudo rpm -q $pkg &>/dev/null || return 1
 	done
 	return 0
 }
 
 wayland_in_gdm(){
-	grep -q "^WaylandEnable=false" /etc/gdm/custom.conf
+	sudo grep -q "^WaylandEnable=false" /etc/gdm/custom.conf
 }
 
 disable_wayland_in_gdm(){
-	sed -i "s/^#WaylandEnable.*/WaylandEnable=false/g" /etc/gdm/custom.conf
-	systemctl restart display-manager
+	sudo sed -i "s/^#WaylandEnable.*/WaylandEnable=false/g" /etc/gdm/custom.conf
+	sudo systemctl restart display-manager
 }
 
 enable_sudo(){
-	if grep -q "^Defaults targetpw" /etc/sudoers; then
-		sed -i "s/^Defaults targetpw.*/# Defaults targetpw/g" /etc/sudoers
+	if sudo grep -q "^Defaults targetpw" /etc/sudoers; then
+		sudo sed -i "s/^Defaults targetpw.*/# Defaults targetpw/g" /etc/sudoers
 	fi
 
-	if grep -q "^ALL   ALL=(ALL) ALL" /etc/sudoers; then
-		sed -i "s/^ALL   ALL=(ALL) ALL.*/# ALL   ALL=(ALL) ALL/g" /etc/sudoers
+	if sudo grep -q "^ALL   ALL=(ALL) ALL" /etc/sudoers; then
+		sudo sed -i "s/^ALL   ALL=(ALL) ALL.*/# ALL   ALL=(ALL) ALL/g" /etc/sudoers
 	fi
 
-	if grep -q "^# %wheel ALL=(ALL) ALL" /etc/sudoers; then
-		sed -i "s/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
+	if sudo grep -q "^# %wheel ALL=(ALL) ALL" /etc/sudoers; then
+		sudo sed -i "s/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
 	fi
 	
 	if [ ! -s /usr/share/polkit-1/actions/org.opensuse.pkexec.yast2.policy ]; then
-		cat <<-EOF > /usr/share/polkit-1/actions/org.opensuse.pkexec.yast2.policy
+		sudo cat <<-EOF > /usr/share/polkit-1/actions/org.opensuse.pkexec.yast2.policy
 		<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/software/polkit/policyconfig-1.dtd">
 		<policyconfig>
 
@@ -78,13 +79,13 @@ enable_sudo(){
 	fi
 
 	if [ ! -s /etc/polkit-default-privs.local.bkup ]; then
-		mv /etc/polkit-default-privs.local /etc/polkit-default-privs.local.bkup
-		cp /etc/polkit-default-privs.standard /etc/polkit-default-privs.local
-		sed -i 's/auth_admin/auth_self/g' /etc/polkit-default-privs.local
+		sudo mv /etc/polkit-default-privs.local /etc/polkit-default-privs.local.bkup
+		sudo cp /etc/polkit-default-privs.standard /etc/polkit-default-privs.local
+		sudo sed -i 's/auth_admin/auth_self/g' /etc/polkit-default-privs.local
 	fi
 
 	if [ ! -x /usr/local/sbin/yast2_polkit ]; then
-		cat<<-EOF > /usr/local/sbin/yast2_polkit
+		sudo cat<<-EOF > /usr/local/sbin/yast2_polkit
 		#!/bin/bash
 		
 		if [ $(which pkexec) ]; then
@@ -93,11 +94,11 @@ enable_sudo(){
 		        /usr/sbin/yast2 "$@"
 		fi
 		EOF
-		chmod +x /usr/local/sbin/yast2_polkit
+		sudo chmod +x /usr/local/sbin/yast2_polkit
 	fi
 
 	if [ ! -s /usr/share/applications/YaST2.desktop ]; then
-		cat<<-EOF > /usr/share/applications/YaST2.desktop
+		sudo cat<<-EOF > /usr/share/applications/YaST2.desktop
 		[Desktop Entry]
 		X-SuSE-translate=true
 		Type=Application
@@ -113,8 +114,8 @@ enable_sudo(){
 		EOF
 	fi
 
-	if [ ! -s /etc/polkit-1/rules.d/10-sudo.rules ]; then
-		cat<<-EOF > /etc/polkit-1/rules.d/10-sudo.rules
+	if ! sudo test -s /etc/polkit-1/rules.d/10-sudo.rules; then
+		sudo cat<<-EOF > /etc/polkit-1/rules.d/10-sudo.rules
 		polkit.addAdminRule(function(action, subject) {
 	        return ["unix-group:wheel"];
 		});
@@ -126,11 +127,11 @@ enable_sudo(){
 path_cert_path_c6(){
 
 	if [ ! -d /etc/pki/tls/certs ]; then
-		mkdir -p /etc/pki/tls/certs
+		sudo mkdir -p /etc/pki/tls/certs
 	fi
 
 	if [ ! -h /etc/pki/tls/certs/ca-bundle.crt ]; then
-		ln -s /etc/ssl/ca-bundle.pem /etc/pki/tls/certs/ca-bundle.crt
+		sudo ln -s /etc/ssl/ca-bundle.pem /etc/pki/tls/certs/ca-bundle.crt
 	fi
 }
 
@@ -139,12 +140,12 @@ install_telegram_desktop(){
 	if [ ! -d /opt/Telegram ]; then
 
 		curl -L --output /tmp/telegram.tar.xz https://telegram.org/dl/desktop/linux
-		tar -C /opt -xJvf /tmp/telegram.tar.xz
-		rm -f /tmp/telegram.tar.xz	
+		sudo tar -C /opt -xJvf /tmp/telegram.tar.xz
+		sudo rm -f /tmp/telegram.tar.xz	
 
-		[ ! -d /usr/local/share/applications ] && mkdir -p /usr/local/share/applications
+		[ ! -d /usr/local/share/applications ] && sudo mkdir -p /usr/local/share/applications
 		if [ ! -s /usr/local/share/applications/Telegram_Desktop.desktop ]; then
-			cat<<-EOF > /usr/local/share/applications/Telegram_Desktop.desktop
+			sudo cat<<-EOF > /usr/local/share/applications/Telegram_Desktop.desktop
 			[Desktop Entry]
 			Version=1.0
 			Name=Telegram Desktop
@@ -172,15 +173,15 @@ install_mattermost_desktop(){
 		MATTERMOST_TGZ_URL="$(curl -s -L $MATTERMOST_LINUX_URL | sed -n '/x64.tar.gz/ s/.*href="\([^"]*\).*/\1/p')"
 		MATTERMOST_PKG_NAME=$(basename $MATTERMOST_TGZ_URL)
 
-		mkdir -p /opt/mattermost-desktop
+		sudo mkdir -p /opt/mattermost-desktop
 		wget -P /tmp/ $MATTERMOST_TGZ_URL
-		tar --strip=1 -C /opt/mattermost-desktop -xzf /tmp/$MATTERMOST_PKG_NAME
-		find /opt/mattermost-desktop -type d -exec chmod 0755 {} \;
-		find /opt/mattermost-desktop -type f -exec chmod 0644 {} \;
-		chmod +x /opt/mattermost-desktop/{*.so,*.bin,*.sh,mattermost-desktop}
+		sudo tar --strip=1 -C /opt/mattermost-desktop -xzf /tmp/$MATTERMOST_PKG_NAME
+		sudo find /opt/mattermost-desktop -type d -exec chmod 0755 {} \;
+		sudo find /opt/mattermost-desktop -type f -exec chmod 0644 {} \;
+		sudo chmod +x /opt/mattermost-desktop/{*.so,*.bin,*.sh,mattermost-desktop}
 		cd /opt/mattermost-desktop
-		./create_desktop_file.sh
-		mv Mattermost.desktop /usr/local/share/applications/
+		sudo ./create_desktop_file.sh
+		sudo mv Mattermost.desktop /usr/local/share/applications/
 	fi
 }
 
@@ -188,7 +189,7 @@ install_mattermost_desktop(){
 # launch installation if any of them is missing.
 #
 if ! missing_pkgs; then
-	get_required_packages | xargs zypper in -y
+	get_required_packages | xargs sudo zypper in -y
 fi
 
 # Disable wayland in gdm if enabled
@@ -199,7 +200,7 @@ fi
 # Link gnome-flashback to gdm pam file
 if [ ! -h /etc/pam.d/gnome-flashback ]; then
 	cd /etc/pam.d
-	ln -s gdm gnome-flashback
+	sudo ln -s gdm gnome-flashback
 	cd -
 fi
 
@@ -208,4 +209,6 @@ path_cert_path_c6
 
 install_telegram_desktop
 install_mattermost_desktop
+
+stow -vvv -t ~/ i3-gnome scripts term-setup
 
