@@ -7,6 +7,7 @@ gsettings set org.gnome.gnome-flashback status-notifier-watcher false
 
 gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
+gsettings set org.gnome.Terminal.Legacy.Settings menu-accelerator-enabled false
 gsettings set org.gnome.Terminal.Legacy.Settings theme-variant 'dark'
 
 gsettings set org.gnome.desktop.interface gtk-theme 'Pop'

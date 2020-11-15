@@ -188,18 +188,13 @@ install_mattermost_desktop(){
 }
 
 sudo zypper -n addrepo https://download.opensuse.org/repositories/home:sonaj96/openSUSE_Tumbleweed/home:sonaj96.repo
-sudo zypper -n refresh 
+sudo zypper --gpg-auto-import-keys -n refresh 
 
 # Check if all required packages are installed and 
 # launch installation if any of them is missing.
 #
 if ! missing_pkgs; then
 	get_required_packages | xargs sudo zypper in -y
-fi
-
-# Disable wayland in gdm if enabled
-if ! wayland_in_gdm; then
-	disable_wayland_in_gdm
 fi
 
 # Link gnome-flashback to gdm pam file
@@ -216,4 +211,11 @@ install_telegram_desktop
 install_mattermost_desktop
 
 stow -vvv -t ~/ i3-gnome scripts term-setup
+
+gnome-settings-tweaks.sh
+
+# Disable wayland in gdm if enabled
+if ! wayland_in_gdm; then
+	disable_wayland_in_gdm
+fi
 
