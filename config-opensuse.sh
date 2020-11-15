@@ -122,6 +122,17 @@ enable_sudo(){
 	fi
 }
 
+path_cert_path_c6(){
+
+	if [ ! -d /etc/pki/tls/certs ]; then
+		mkdir -p /etc/pki/tls/certs
+	fi
+
+	if [ ! -h /etc/pki/tls/certs/ca-bundle.crt ]; then
+		ln -s /etc/ssl/ca-bundle.pem /etc/pki/tls/certs/ca-bundle.crt
+	fi
+}
+
 # Check if all required packages are installed and 
 # launch installation if any of them is missing.
 #
@@ -142,4 +153,5 @@ if [ ! -h /etc/pam.d/gnome-flashback ]; then
 fi
 
 enable_sudo
+path_cert_path_c6
 
