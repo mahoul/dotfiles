@@ -2,11 +2,13 @@
 
 get_required_packages(){
 	cat <<-EOF
+	MozillaThunderbird
 	NetworkManager-applet 
 	ca-certificates-cacert
 	colordiff
 	dmenu
 	dpkg
+	dunst
 	feh
 	fontawesome-fonts
 	gnome-flashback
@@ -14,6 +16,7 @@ get_required_packages(){
 	gucharmap
 	htop
 	i3
+	libnotify-tools
 	lsb-release
 	mc
 	mozilla-nss-tools
@@ -22,6 +25,7 @@ get_required_packages(){
 	net-tools-deprecated
 	parcellite
 	pasystray
+	pavucontrol
 	rofi
 	stow
 	tmux
