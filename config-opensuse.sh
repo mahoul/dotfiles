@@ -192,6 +192,8 @@ install_mattermost_desktop(){
 	fi
 }
 
+[ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
+
 sudo zypper -n addrepo https://download.opensuse.org/repositories/home:sonaj96/openSUSE_Tumbleweed/home:sonaj96.repo
 sudo zypper --gpg-auto-import-keys -n refresh 
 
