@@ -142,56 +142,6 @@ path_cert_path_c6(){
 	fi
 }
 
-install_telegram_desktop(){
-
-	if [ ! -d /opt/Telegram ]; then
-
-		curl -L --output /tmp/telegram.tar.xz https://telegram.org/dl/desktop/linux
-		sudo tar -C /opt -xJvf /tmp/telegram.tar.xz
-		sudo rm -f /tmp/telegram.tar.xz	
-
-		[ ! -d /usr/local/share/applications ] && sudo mkdir -p /usr/local/share/applications
-		if [ ! -s /usr/local/share/applications/Telegram_Desktop.desktop ]; then
-			sudo bash -c "cat >/usr/local/share/applications/Telegram_Desktop.desktop" <<-EOF
-			[Desktop Entry]
-			Version=1.0
-			Name=Telegram Desktop
-			Comment=Official desktop version of Telegram messaging app
-			TryExec=/opt/Telegram/Telegram
-			Exec=/opt/Telegram/Telegram -- %u
-			Icon=telegram
-			Terminal=false
-			StartupWMClass=TelegramDesktop
-			Type=Application
-			Categories=Chat;Network;InstantMessaging;Qt;
-			MimeType=x-scheme-handler/tg;
-			Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;
-			X-GNOME-UsesNotifications=true
-			EOF
-		fi
-
-	fi
-
-}
-
-install_mattermost_desktop(){
-	if [ ! -d /opt/mattermost-desktop/ ]; then
-		MATTERMOST_LINUX_URL="https://docs.mattermost.com/install/desktop.html#linux"
-		MATTERMOST_TGZ_URL="$(curl -s -L $MATTERMOST_LINUX_URL | sed -n '/x64.tar.gz/ s/.*href="\([^"]*\).*/\1/p')"
-		MATTERMOST_PKG_NAME=$(basename $MATTERMOST_TGZ_URL)
-
-		sudo mkdir -p /opt/mattermost-desktop
-		wget -P /tmp/ $MATTERMOST_TGZ_URL
-		sudo tar --strip=1 -C /opt/mattermost-desktop -xzf /tmp/$MATTERMOST_PKG_NAME
-		sudo find /opt/mattermost-desktop -type d -exec chmod 0755 {} \;
-		sudo find /opt/mattermost-desktop -type f -exec chmod 0644 {} \;
-		sudo chmod +x /opt/mattermost-desktop/{*.so,*.bin,*.sh,mattermost-desktop}
-		cd /opt/mattermost-desktop
-		sudo ./create_desktop_file.sh
-		sudo mv Mattermost.desktop /usr/local/share/applications/
-	fi
-}
-
 [ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
 
 sudo zypper -n addrepo https://download.opensuse.org/repositories/home:sonaj96/openSUSE_Tumbleweed/home:sonaj96.repo
@@ -214,8 +164,8 @@ fi
 enable_sudo
 path_cert_path_c6
 
-install_telegram_desktop
-install_mattermost_desktop
+scripts/bin/install-telegram.sh
+scripts/bin/install-mattermost.sh
 
 stow -vvv -t ~/ i3-gnome scripts term-setup
 
