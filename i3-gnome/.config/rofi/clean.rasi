@@ -10,7 +10,7 @@ configuration {
 @import "colors.rasi"
 
 #window {
-    width: 60%;
+    width: 80%;
     height: 60%;
     background-color: rgba(255, 255, 255, 0.1);
 //    padding: 90px 120px;
@@ -29,7 +29,7 @@ configuration {
 
 #listview {
     padding: 20px;
-    columns: 5;
+    columns: 4;
     spacing: 4px;
     cycle: false;
     dynamic: true;
@@ -45,7 +45,7 @@ element {
 }
 
 element-icon {
-    size: 80px;
+    size: 64px;
     margin: 0 10px 0 0;
 }
 

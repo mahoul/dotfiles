@@ -1,0 +1,6 @@
+{
+	"name": "gruvbox_dark",
+	"groups": {
+		"user":                       { "fg": "gruvbox:dark0_hard", "bg": "gruvbox:bright_yellow", "attrs": ["bold"] }
+	}
+}
