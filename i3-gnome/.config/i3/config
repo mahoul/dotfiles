@@ -112,6 +112,10 @@ bindsym $mod+$alt+Left workspace prev
 # show scratchpad
 #bindsym $mod+Ctrl+a [class="scratch"] scratchpad show
 bindsym $mod+d [class="scratch"] scratchpad show
+
+#bindsym $mod+d workspace 10
+#bindsym --release $mod+d workspace back_and_forth
+
 #bindsym $mod+d scratchpad show
 #bindcode 133 [instance="scratch"] scratchpad show
 
@@ -260,7 +264,7 @@ for_window [class="Synergy"] floating enable
 #for_window [class="Pavucontrol"] floating enable border normal resize set 1024 384
 #for_window [class="Pavucontrol"] floating enable resize set 1024 576
 for_window [title="Volume Control"] floating enable resize set 1024 576
-for_window [class="zoom"] floating enable
+for_window [class="zoom"] floating enable; exec stop-picom.sh
 for_window [class="Gnome-control-center"] floating enable
 for_window [title=".*noVNC.*"] floating enable
 for_window [title=".*Proxmox Console.*"] floating enable
@@ -370,7 +374,8 @@ bar {
 #	font pango:Helvetica Bold 11
 
 #	font pango:Fira Sans Condensed Medium Italic 11
-	font pango:Latin Modern 9 Bold Italic 11
+#	font pango:Latin Modern 9 Bold Italic 11
+	font pango:Latin Modern 9 Bold 11
 	tray_output primary
 	tray_padding 2
         status_command i3status
@@ -397,7 +402,7 @@ exec --no-startup-id setup-monitors.sh
 exec --no-startup-id nm-applet
 #exec --no-startup-id guake
 
-exec --no-startup-id picom
+exec --no-startup-id toggle-picom.sh
 
 exec --no-startup-id gnome-flashback
 #

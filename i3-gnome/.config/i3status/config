@@ -24,6 +24,7 @@ order += "cpu_temperature all"
 order += "tztime date"
 order += "tztime time"
 order += "read_file hostname"
+order += "read_file kaka"
 
 ethernet tun0 {
         format_up = " %ip"
@@ -93,5 +94,14 @@ tztime time {
 read_file hostname { 
 	format = "   %content   "
 	path = "/etc/hostname"
+}
+
+read_file kaka {
+	#format = "   %content   "
+	#format = "%content"
+	#format = " picom! "
+	format = "     "
+	format_bad = ""
+	path = "/tmp/picom_egil397.pid"
 }
 
