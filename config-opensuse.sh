@@ -51,86 +51,6 @@ disable_wayland_in_gdm(){
 	sudo systemctl restart display-manager
 }
 
-enable_sudo(){
-	if sudo grep -q "^Defaults targetpw" /etc/sudoers; then
-		sudo sed -i "s/^Defaults targetpw.*/# Defaults targetpw/g" /etc/sudoers
-	fi
-
-	if sudo grep -q "^ALL   ALL=(ALL) ALL" /etc/sudoers; then
-		sudo sed -i "s/^ALL   ALL=(ALL) ALL.*/# ALL   ALL=(ALL) ALL/g" /etc/sudoers
-	fi
-
-	if sudo grep -q "^# %wheel ALL=(ALL) ALL" /etc/sudoers; then
-		sudo sed -i "s/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
-	fi
-	
-	if [ ! -s /usr/share/polkit-1/actions/org.opensuse.pkexec.yast2.policy ]; then
-		sudo bash -c "cat >/usr/share/polkit-1/actions/org.opensuse.pkexec.yast2.policy" <<-EOF
-		<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/software/polkit/policyconfig-1.dtd">
-		<policyconfig>
-
-		  <action id="org.opensuse.pkexec.yast2">
-		    <message>Authentication is required to run YaST2</message>
-		    <icon_name>yast2</icon_name>
-		    <defaults>
-		      <allow_any>auth_self</allow_any>
-		      <allow_inactive>auth_self</allow_inactive>
-		      <allow_active>auth_self</allow_active>
-		    </defaults>
-		    <annotate key="org.freedesktop.policykit.exec.path">/usr/sbin/yast2</annotate>
-		    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
-		  </action>
-
-		</policyconfig>
-		EOF
-	fi
-
-	if [ ! -s /etc/polkit-default-privs.local.bkup ]; then
-		sudo mv /etc/polkit-default-privs.local /etc/polkit-default-privs.local.bkup
-		sudo cp /etc/polkit-default-privs.standard /etc/polkit-default-privs.local
-		sudo sed -i 's/auth_admin/auth_self/g' /etc/polkit-default-privs.local
-	fi
-
-	if [ ! -x /usr/local/sbin/yast2_polkit ]; then
-		sudo bash -c "cat >/usr/local/sbin/yast2_polkit" <<-EOF
-		#!/bin/bash
-		
-		if [ $(which pkexec) ]; then
-		        pkexec --disable-internal-agent "/usr/sbin/yast2" "$@"
-		else
-		        /usr/sbin/yast2 "$@"
-		fi
-		EOF
-		sudo chmod +x /usr/local/sbin/yast2_polkit
-	fi
-
-	if [ ! -s /usr/share/applications/YaST2.desktop ]; then
-		sudo bash -c "cat >/usr/share/applications/YaST2.desktop" <<-EOF
-		[Desktop Entry]
-		X-SuSE-translate=true
-		Type=Application
-		Categories=Settings;System;X-SuSE-Core-System;X-SuSE-ControlCenter-System;X-GNOME-SystemSettings;
-		Name=YaST2
-		Icon=yast
-		GenericName=Administrator Settings
-		Exec=/usr/local/sbin/yast2_polkit
-		Encoding=UTF-8
-		Comment=Manage system-wide settings
-		Comment[DE]=Systemweite administrative Einstellungen
-		NoDisplay=false
-		EOF
-	fi
-
-	if ! sudo test -s /etc/polkit-1/rules.d/10-sudo.rules; then
-		sudo bash -c "cat >/etc/polkit-1/rules.d/10-sudo.rules" <<-EOF
-		polkit.addAdminRule(function(action, subject) {
-	        return ["unix-group:wheel"];
-		});
-		
-		EOF
-	fi
-}
-
 path_cert_path_c6(){
 
 	if [ ! -d /etc/pki/tls/certs ]; then
@@ -161,7 +81,6 @@ if [ ! -h /etc/pam.d/gnome-flashback ]; then
 	cd -
 fi
 
-enable_sudo
 path_cert_path_c6
 
 scripts/bin/install-telegram.sh
