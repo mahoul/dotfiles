@@ -5,7 +5,7 @@ if su -c 'grep -q "^Defaults targetpw" /etc/sudoers'; then
 fi
 
 if su -c 'grep -q "^ALL   ALL=(ALL) ALL" /etc/sudoers'; then
-	su -c '"s/^ALL   ALL=(ALL) ALL.*/# ALL   ALL=(ALL) ALL/g" /etc/sudoers'
+	su -c 'sed -i "s/^ALL   ALL=(ALL) ALL.*/# ALL   ALL=(ALL) ALL/g" /etc/sudoers'
 fi
 
 if su -c 'grep -q "^# %wheel ALL=(ALL) ALL" /etc/sudoers'; then
