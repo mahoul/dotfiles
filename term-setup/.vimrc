@@ -9,13 +9,14 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 execute pathogen#infect()
 filetype plugin indent on
 
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme elflord
 syntax on
 set backspace=indent,eol,start
 set cursorline
 set cursorcolumn
 set modeline
-set bg=dark
+"set bg=light
 
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')

@@ -83,9 +83,13 @@ editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
 skin=modarin256
 
+fish_directory_timeout=900
+
+shadows=true
+
 [Layout]
 output_lines=0
-left_panel_size=119
+left_panel_size=95
 top_panel_size=0
 message_visible=true
 keybar_visible=true

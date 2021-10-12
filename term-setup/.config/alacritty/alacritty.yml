@@ -1,0 +1,60 @@
+font:
+  normal:
+    family: Jetbrains Mono
+    style: Medium
+  bold:
+    family: Jetbrains Mono
+    style: Bold
+  italic:
+    family: Jetbrains Mono
+    style: Italic
+  bold_italic:
+    family: Jetbrains Mono
+    style: Bold Italic
+  size: 11
+  offset:
+    x: -1
+colors:
+  primary:
+    background: '#2E3440'
+    foreground: '#D8DEE9'
+    dim_foreground: '#dbdbdb'
+    bright_foreground: '#d9d9d9'
+    dim_background: '#202020'
+    bright_background: '#3a3a3a'
+  normal:
+    black: '#3B4252'
+    red: '#BF616A'
+    green: '#A3BE8C'
+    yellow: '#EBCB8B'
+    blue: '#81A1C1'
+    magenta: '#B48EAD'
+    cyan: '#88C0D0'
+    white: '#E5E9F0'
+  bright:
+    black: '#4C566A'
+    red: '#BF616A'
+    green: '#A3BE8C'
+    yellow: '#EBCB8B'
+    blue: '#81A1C1'
+    magenta: '#B48EAD'
+    cyan: '#8FBCBB'
+    white: '#ECEFF4'
+  name: zenburn
+  author: ''
+  cursor:
+    text: '#1b2b34'
+    cursor: '#ffffff'
+  dim:
+    black: '#232323'
+    red: '#74423f'
+    green: '#5e6547'
+    yellow: '#8b7653'
+    blue: '#556b79'
+    magenta: '#6e4962'
+    cyan: '#5c8482'
+    white: '#828282'
+cursor:
+  style:
+    shape: Block
+    blinking: Always

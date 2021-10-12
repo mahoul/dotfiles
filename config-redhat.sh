@@ -26,6 +26,7 @@ get_required_packages(){
 	pasystray
 	pavucontrol
 	picom
+	polybar
 	rofi
 	stow
 	thunderbird
@@ -77,14 +78,14 @@ if ! missing_pkgs; then
 fi
 
 # Link gnome-flashback to gdm pam file
-if [ ! -h /etc/pam.d/gnome-flashback ]; then
-	cd /etc/pam.d
-	sudo ln -s gdm gnome-flashback
-	cd -
-fi
+#if [ ! -h /etc/pam.d/gnome-flashback ]; then
+#	cd /etc/pam.d
+#	sudo ln -s gdm gnome-flashback
+#	cd -
+#fi
 
-scripts/bin/install-telegram.sh
-scripts/bin/install-mattermost.sh
+#scripts/bin/install-telegram.sh
+#scripts/bin/install-mattermost.sh
 
 stow -vvv -t ~/ i3-gnome scripts term-setup
 
