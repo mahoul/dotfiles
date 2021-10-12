@@ -8,12 +8,14 @@ get_required_packages(){
 	dunst
 	feh
 	fontawesome-fonts
+	gnome-calculator
 	gnome-flashback
 	gnome-font-viewer
 	gnome-session-xsession
 	gnome-tweaks
 	google-noto-sans-mono-fonts
 	gucharmap
+	guake
 	htop
 	i3
 	mc
