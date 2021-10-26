@@ -10,7 +10,7 @@ gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
 gsettings set org.gnome.Terminal.Legacy.Settings menu-accelerator-enabled false
 gsettings set org.gnome.Terminal.Legacy.Settings theme-variant 'dark'
 
-gsettings set org.gnome.desktop.interface gtk-theme 'Gruvbox-Material-Dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'Nord-GTK'
 gsettings set org.gnome.desktop.interface icon-theme 'Gruvbox-Material-Dark'
 gsettings set org.gnome.desktop.interface document-font-name 'Fira Code Medium 11'
 gsettings set org.gnome.desktop.interface font-name 'Fira Sans Medium 11'

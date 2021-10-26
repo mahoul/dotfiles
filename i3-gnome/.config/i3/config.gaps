@@ -282,6 +282,7 @@ for_window [class=".*icedteaweb.*"] floating enable
 for_window [class=".*IPMIView.*"] floating enable
 for_window [title="XTermFloat"] floating enable
 for_window [class="OpenBoard"] fullscreen toggle
+for_window [class="steam"] floating enable, resize set 1920 1080, move position -1 -1, border pixel 0
 
 for_window [class="scratch-gedit"] floating enable border pixel 1
 for_window [class="scratch-gedit"] resize set 845 1030
@@ -361,7 +362,21 @@ for_window [class=".*"] title_format "<span font='Fira Sans Condensed Bold 10'> 
 # Set colors
 # class                 border  backgr. text    indicator child_border
 #client.focused          #ebdbb2 #424242 #ffffff #2e9ef4   #ebdbb2
-client.focused          #ebdbb2 #ebdbb2 #282828 #2e9ef4   #ebdbb2
+#client.focused          #ebdbb2 #ebdbb2 #282828 #2e9ef4   #ebdbb2
+
+##START THEMING WM
+
+# Window color settings
+# class                 border  backgr. text    indicator
+client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
+client.unfocused        #2e3440 #2e3440 #888888 #2e3440
+client.focused_inactive #2e3440 #2e3440 #888888 #2e3440
+client.placeholder      #2e3440 #2e3440 #888888 #2e3440
+client.urgent           #900000 #900000 #ffffff #900000
+
+client.background       #242424
+
+##STOP THEMING WM
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.

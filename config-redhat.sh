@@ -34,7 +34,6 @@ get_required_packages(){
 	thunderbird
 	tmux
 	tmux-powerline
-	xorg-x11-utils
 	xorg-x11-xinit-session
 	EOF
 }
@@ -94,7 +93,7 @@ stow -vvv -t ~/ i3-gnome scripts term-setup
 gnome-settings-tweaks.sh
 
 # Disable wayland in gdm if enabled
-if ! wayland_in_gdm; then
-	disable_wayland_in_gdm
-fi
+#if ! wayland_in_gdm; then
+#	disable_wayland_in_gdm
+#fi
 
