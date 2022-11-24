@@ -2,9 +2,11 @@
 
 get_required_packages(){
 	cat <<-EOF
+	alacritty
 	bat
 	btop
 	colordiff
+	dconf-editor
 	dmenu
 	dunst
 	exa
@@ -72,8 +74,8 @@ fi
 #	cd -
 #fi
 
-stow -vvv --adopt -t ~/ term-setup
+stow -vvv --adopt -t ~/ term-setup i3-gnome
 
-#gnome-settings-tweaks.sh
+gnome-settings-tweaks.sh
 
 

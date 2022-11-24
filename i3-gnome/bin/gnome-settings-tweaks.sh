@@ -13,7 +13,9 @@ gsettings set org.gnome.gnome-flashback status-notifier-watcher false
 gsettings set org.gnome.Terminal.Legacy.Settings headerbar 			false
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar 		false
 gsettings set org.gnome.Terminal.Legacy.Settings menu-accelerator-enabled 	false
-gsettings set org.gnome.Terminal.Legacy.Settings theme-variant 			'dark'
+
+# Adjust window resize with secondary button
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button 	true
 
 # Adjust the themes on Gnome
 gsettings set org.gnome.desktop.interface gtk-theme 	'Nordic-bluish-accent-v40'
@@ -28,6 +30,6 @@ gsettings set org.gnome.desktop.interface monospace-font-name 	'JetBrains Mono M
 # Enable night light 
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 
-# Restore gnome-terminal profiles
-dconf load /org/gnome/terminal/legacy/profiles:/ < ~/.config/gnome-terminal-profiles
+## Restore gnome-terminal profiles
+#dconf load /org/gnome/terminal/legacy/profiles:/ < ~/.config/gnome-terminal-profiles
 
