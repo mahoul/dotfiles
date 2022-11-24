@@ -1,3 +1,5 @@
+env:
+  TERM: xterm-256color
 font:
   normal:
     family: Jetbrains Mono
@@ -14,6 +16,10 @@ font:
   size: 11
   offset:
     x: -1
+window:
+  padding:
+    x: 5
+    y: 5
 colors:
   primary:
     background: '#2E3440'

@@ -72,7 +72,7 @@ fi
 #	cd -
 #fi
 
-#stow -vvv -t ~/ i3-gnome scripts term-setup
+stow -vvv --adopt -t ~/ term-setup
 
 #gnome-settings-tweaks.sh
 

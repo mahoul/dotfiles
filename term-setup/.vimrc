@@ -10,7 +10,9 @@ execute pathogen#infect()
 filetype plugin indent on
 
 "colorscheme gruvbox
-colorscheme elflord
+"colorscheme elflord
+colorscheme nord
+
 syntax on
 set backspace=indent,eol,start
 set cursorline
@@ -26,3 +28,4 @@ let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 "let g:airline_theme = 'molokai'
+
