@@ -1,8 +1,0 @@
-!gnome.gtk.theme:	Ayu-Mirage-Darker
-!gnome.gtk.theme:	Pop-Dark
-!gnome.icon.theme:	Pop
-gnome.terminal.font:	Fira Code Medium 11
-
-
-! vim: ft=xdefaults
-
