@@ -31,6 +31,7 @@ get_required_packages(){
 	net-tools
 	network-manager-applet
 	nss-tools
+	papirus-icon-theme
 	parcellite
 	pasystray
 	pavucontrol

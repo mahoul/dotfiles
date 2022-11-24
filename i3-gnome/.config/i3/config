@@ -386,7 +386,7 @@ font pango:Fira Sans Condensed Bold 16
 
 # Toggle composition on/off
 # %%hotkey: Toggle composition on/off %%
-bindsym $mod+p exec toggle-picom.sh
+#bindsym $mod+p exec toggle-picom.sh
 
 ##############################
 # i3 Bar
