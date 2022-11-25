@@ -63,6 +63,9 @@ bindsym $mod+Ctrl+space exec rofi -show window
 # %%hotkey: Show this list  %%
 bindsym $mod+a exec dmenu_hotkeys.py i3
 
+# launch set-scale.sh
+bindsym $mod+s exec set-scale.sh
+
 # launch file search
 #bindsym $mod+$alt+space exec rofi -show find
 
