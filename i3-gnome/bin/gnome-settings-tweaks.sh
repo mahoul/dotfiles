@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Adjust theme
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Disable desktop management for notificacions on gnome-flashback 
 # and disable background drawing too.
@@ -20,14 +22,16 @@ gsettings set org.gnome.Terminal.Legacy.Settings menu-accelerator-enabled 	false
 # Adjust window resize with secondary button
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button 	true
 
-# Adjust gnome-shell
-gsettings set org.gnome.shell disabled-extensions	'[]'
-gsettings set org.gnome.shell enabled-extensions        '['background-logo@fedorahosted.org', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com']'
-
 # Adjust the themes on Gnome
 gsettings set org.gnome.desktop.interface gtk-theme 	 'Nordic-bluish-accent-v40'
-gsettings set org.gnome.shell.extensions.user-theme name 'Nordic-bluish-accent-v40'
 gsettings set org.gnome.desktop.interface icon-theme 	 'Papirus-Dark'
+
+# Adjust the super+s key to toggle scaling
+gsettings set org.gnome.shell.keybindings toggle-overview '[]'
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>s'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'set-scale.sh'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Set scale'
 
 # Adjust the fonts
 #

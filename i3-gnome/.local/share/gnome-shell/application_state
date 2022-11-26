@@ -1,15 +1,11 @@
 <?xml version="1.0"?>
 <application-state>
   <context id="">
-    <application id="nemo.desktop" score="25" last-seen="1669483992"/>
-    <application id="org.gnome.Nautilus.desktop" score="93" last-seen="1669484937"/>
-    <application id="org.gnome.Extensions.desktop" score="9" last-seen="1669477521"/>
-    <application id="org.gnome.tweaks.desktop" score="23" last-seen="1669477222"/>
-    <application id="org.gnome.Settings.desktop" score="4" last-seen="1669476907"/>
-    <application id="org.gnome.Terminal.desktop" score="120" last-seen="1669484930"/>
-    <application id="com.brave.Browser.desktop" score="979" last-seen="1669484667"/>
-    <application id="guake.desktop" score="0" last-seen="0"/>
-    <application id="ca.desrt.dconf-editor.desktop" score="53" last-seen="1669484335"/>
-    <application id="org.gnome.TextEditor.desktop" score="6" last-seen="1669484937"/>
+    <application id="firefox.desktop" score="12" last-seen="1669487226"/>
+    <application id="ca.desrt.dconf-editor.desktop" score="103" last-seen="1669488640"/>
+    <application id="org.gnome.Extensions.desktop" score="7" last-seen="1669487042"/>
+    <application id="org.gnome.Terminal.desktop" score="187" last-seen="1669488599"/>
+    <application id="org.gnome.Settings.desktop" score="22" last-seen="1669487228"/>
+    <application id="org.gnome.tweaks.desktop" score="3" last-seen="1669487242"/>
   </context>
 </application-state>
