@@ -12,7 +12,6 @@ get_required_packages(){
 	exa
 	feh
 	fontawesome-fonts
-	gnome-calculator
 	gnome-extensions-app
 	gnome-flashback
 	gnome-font-viewer
@@ -41,7 +40,6 @@ get_required_packages(){
 	powerline-fonts
 	rofi
 	stow
-	thunderbird
 	tmux
 	tmux-powerline
 	tmux-powerline
@@ -67,6 +65,19 @@ missing_pkgs(){
 if ! missing_pkgs; then
 	get_required_packages | xargs sudo yum install -y
 fi
+
+# Enable flatpaks and install them
+#
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install -y \
+	com.brave.Browser \
+	com.github.alexkdeveloper.notepad \
+	com.hamrick.VueScan \
+	io.github.mimbrero.WhatsAppDesktop \
+	org.filezillaproject.Filezilla \
+	org.gnome.Calculator \
+	org.gnome.Calendar \
+	org.telegram.desktop
 
 # Link gnome-flashback to gdm pam file
 #if [ ! -h /etc/pam.d/gnome-flashback ]; then
