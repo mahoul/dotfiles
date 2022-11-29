@@ -17,27 +17,11 @@
 ;==========================================================
 
 [colors]
-;;background = ${xrdb:color0:#222}
-;;background = #222
-;;background = #383838
-;background = #282828
-;background-alt = #444
-;;foreground = ${xrdb:color7:#222}
-;foreground = #dfdfdf
-;foreground-alt = #555
-;primary = #ffb52a
-;secondary = #e60053
-;alert = #bd2c40
-
 include-file = $HOME/.config/polybar/dark-colors
 
 [bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 48
-;offset-x = 1%
-;offset-y = 1%
-;radius = 6.0
 radius = 0.0
 fixed-center = false
 
@@ -56,9 +40,6 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-;font-0 = fixed:pixelsize=10;1
-;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-;font-2 = Sans:pixelsize=16;1
 font-0 = Fira Sans Medium:size=10;1
 
 modules-left = i3 xwindow
@@ -67,28 +48,12 @@ modules-right = battery cpu temperature system-fan-speed eth tun
 
 tray-position = right
 tray-padding = 2
-;tray-background = #0063ff
 tray-maxsize = 32
 tray-scale = 1.0
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 dpi = 125
-
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
 
 [module/i3]
 type = internal/i3
@@ -124,42 +89,12 @@ label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-;format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
 
-[module/eth]
-type = internal/network
-interface = enp8s0f3u1u1
-interval = 3.0
 
-format-connected-underline = #55aa55
-;format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/tun]
-type = internal/network
-interface = tun0
-interval = 3.0
-
-format-connected-underline = #55aa55
-;format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
 
 [module/date]
 type = internal/date
@@ -171,11 +106,13 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-;format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
 label = %date% - %time%
+
+
+
 
 [module/battery]
 type = internal/battery
@@ -189,26 +126,23 @@ format-charging-underline = #ffb52a
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-;format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-;ramp-capacity-0 = 
-;ramp-capacity-1 = 
-;ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-;animation-charging-0 = 
-;animation-charging-1 = 
-;animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-;animation-discharging-0 = 
-;animation-discharging-1 = 
-;animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+label = %percentage:2%%
 
 [module/temperature]
 type = internal/temperature
@@ -217,10 +151,8 @@ warn-temperature = 80
 
 hwmon-path = /sys/class/hwmon/hwmon5/temp1_input
 
-;format = <ramp> <label>
 format = <label>
 format-underline = #f50a4d
-;format-warn = <ramp> <label-warn>
 format-warn = <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -228,9 +160,6 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-;ramp-0 = 
-;ramp-1 = 
-;ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/system-fan-speed]
@@ -240,13 +169,29 @@ interval = 10
 
 format-underline = #f50a4d
 
+[module/eth]
+type = internal/network
+interface = enp8s0f3u1u1
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+
+[module/tun]
+type = internal/network
+interface = tun0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
 margin-top = 5

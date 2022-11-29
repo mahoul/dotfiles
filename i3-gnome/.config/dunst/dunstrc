@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x5-30+150"
+    geometry = "350x7-13+32"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -41,7 +41,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 25
+    transparency = 1
 
     # The height of the entire notification.  If the height is smaller
     # than the font height and padding combined, it will be raised
@@ -61,13 +61,10 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 1
+    frame_width = 2
 
     # Defines color of the frame around the notification window.
-#    frame_color = "#3232ff"
-    frame_color = "#ebdbb2"
-#    background = "#00004c"
-    background = "#282828"
+    frame_color = "#5E81AC"
 
     # Define a color for the separator.
     # possible values are:
@@ -75,7 +72,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = auto
+    separator_color = frame
 
     # Sort messages by urgency.
     sort = yes
@@ -83,16 +80,15 @@
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
     # Set to 0 to disable.
-    # Transient notifications ignore this setting.
-    idle_threshold = 300
+    idle_threshold = 200
 
     ### Text ###
 
-    font = Fira Sans Bold Italic 10
+    font = SF Pro Display 11
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
-    line_height = 0
+    line_height = 1
 
     # Possible values are:
     # full: Allow a small subset of html markup in notifications:
@@ -116,7 +112,7 @@
     #
     # It's important to note that markup inside the format option will be parsed
     # regardless of what this is set to.
-    markup = full
+     markup = yes
 
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -126,10 +122,9 @@
     #   %I  iconname (without its path)
     #   %p  progress value if set ([  0%] to [100%]) or nothing
     #   %n  progress value if set without any extra characters
-    #   %%  Literal %
     # Markup is allowed
-    #format = "<b>%a %s</b>\n%b"
-    format = "<b>%s</b>\n%b"
+    #format = "<b>%s</b>\n%b"
+    format = "<b>%s %p</b>\n%b\n%p"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -138,18 +133,16 @@
     # Show age of message if message is older than show_age_threshold
     # seconds.
     # Set to -1 to disable.
-    show_age_threshold = 10
+    show_age_threshold = 60
 
     # Split notifications into multiple lines if they don't fit into
     # geometry.
     word_wrap = yes
 
-    # When word_wrap is set to no, specify where to ellipsize long lines.
-    # Possible values are "start", "middle" and "end".
-    ellipsize = middle
-
     # Ignore newlines '\n' in notifications.
     ignore_newline = no
+
+    ellipsize = middle
 
     # Merge multiple notifications with the same content
     stack_duplicates = true
@@ -169,17 +162,14 @@
     max_icon_size = 32
 
     # Paths to default icons.
-    #icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-    icon_path = /usr/share/icons/gnome/32x32/status/:/usr/share/icons/gnome/32x32/devices/
-
-    ### History ###
+    icon_path = /usr/share/icons/Papirus-Dark/16x16/status/:/usr/share/icons/Papirus-Dark/16x16/devices/
 
     # Should a notification popped up from history be sticky or timeout
     # as if it would normally do.
-    sticky_history = timeout
+    sticky_history = yes
 
     # Maximum amount of notifications kept in history
-    history_length = 10
+    history_length = 20
 
     ### Misc/Advanced ###
 
@@ -187,7 +177,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/firefox -new-tab
+    browser = /usr/bin/brave
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
@@ -202,15 +192,6 @@
     # This is mainly for error detection, since dbus (re-)starts dunst
     # automatically after a crash.
     startup_notification = false
-
-    # Manage dunst's desire for talking
-    # Can be one of the following values:
-    #  crit: Critical features. Dunst aborts
-    #  warn: Only non-fatal warnings
-    #  mesg: Important Messages
-    #  info: all unimportant stuff
-    # debug: all less than unimportant stuff
-    verbosity = mesg
 
     ### Legacy
 
@@ -242,49 +223,36 @@
     # Xev might be helpful to find names for keys.
 
     # Close notification.
-    close = ctrl+d
+    close = ctrl+space
 
     # Close all notifications.
-    close_all = ctrl+shift+d
+    close_all = ctrl+shift+space
 
     # Redisplay last message(s).
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1". Make sure this key actually exists on your keyboard layout,
     # e.g. check output of 'xmodmap -pke'
-    #history = ctrl+grave
+    history = ctrl+mod1+j
 
-    # Context menu.
-    context = ctrl+shift+period
 
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-#    background = "#3232ff"
-    background = "#424242"
-#    foreground = "#888888"
-    foreground = "#EBDBB2"
-    timeout = 3
-    # Icon for notifications with low urgency, uncomment to enable
-    #icon = /path/to/icon
+    msg_urgency = low
+    background = "#2E344090"
+	foreground = "#D8DEE9"
+	timeout= 4 
 
 [urgency_normal]
-#    background = "#000066"
-    background = "#504B35"
-#    foreground = "#ffffff"
-    foreground = "#EBDBB2"
-#    frame_color = "#323284"
-    timeout = 5
-    # Icon for notifications with normal urgency, uncomment to enable
-    #icon = /path/to/icon
+	msg_urgency = normal
+	background = "#3B425299"
+	foreground = "#E5E9F0"
+	timeout = 4 
 
 [urgency_critical]
-    background = "#900000"
-#    foreground = "#ffffff"
-    foreground = "#EBDBB2"
-#    frame_color = "#ff0000"
-    timeout = 7
-    # Icon for notifications with critical urgency, uncomment to enable
-    #icon = /path/to/icon
+	msg_urgency = critical
+	background = "#2E344099"
+	foreground = "#D08770"
+	timeout = 0 
+
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -343,4 +311,5 @@
 #    summary = *twitter.com*
 #    urgency = normal
 #
+
 # vim: ft=cfg
