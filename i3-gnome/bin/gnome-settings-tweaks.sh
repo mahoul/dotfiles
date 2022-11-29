@@ -1,5 +1,22 @@
 #!/bin/bash
 
+
+
+get_required_extensions(){
+        cat <<-EOF
+        BingWallpaper@ineffable-gmail.com \
+        SwitchFocusType@romano.rgtti.com \
+        Vitals@CoreCoding.com \
+        dash-to-dock@micxgx.gmail.com \
+        tiling-assistant@leleat-on-github \
+        trayIconsReloaded@selfmade.pl \
+        user-theme@gnome-shell-extensions.gcampax.github.com
+	EOF
+}
+
+
+
+
 # Adjust theme
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
@@ -23,14 +40,9 @@ gsettings set org.gnome.Terminal.Legacy.Settings menu-accelerator-enabled 	false
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button 	true
 
 # Adjust gnome extensions
-gnome-extensions enable \
-	BingWallpaper@ineffable-gmail.com \
-	SwitchFocusType@romano.rgtti.com \
-	Vitals@CoreCoding.com \
-	dash-to-dock@micxgx.gmail.com \
-	tiling-assistant@leleat-on-github \
-	trayIconsReloaded@selfmade.pl \
-	user-theme@gnome-shell-extensions.gcampax.github.com
+for ext in $(get_required_extensions); do
+	gnome-extensions enable $ext
+done
 
 # Adjust the themes on Gnome
 gsettings set org.gnome.desktop.interface gtk-theme 	 'Nordic-bluish-accent-v40'
