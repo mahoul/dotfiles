@@ -68,7 +68,7 @@ fi
 
 # Enable flatpaks and install them
 #
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y \
 	com.brave.Browser \
 	com.github.alexkdeveloper.notepad \

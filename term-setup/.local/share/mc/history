@@ -1,0 +1,20 @@
+[cmdline]
+0=
+
+[Dir Hist New Right Panel]
+0=/home/egil/.local/share
+1=/home/egil/Projects/dotfiles
+2=/home/egil/Projects/dotfiles/i3-gnome
+3=/home/egil/Projects/dotfiles/i3-gnome/.local
+4=/home/egil/Projects/dotfiles/i3-gnome/.local/share
+5=/home/egil/Projects/dotfiles/i3-gnome/.local/share/gnome-shell/extensions
+6=/home/egil/Projects/dotfiles/i3-gnome/.local/share/gnome-shell
+
+[Dir Hist New Left Panel]
+0=/home/egil/Projects/dotfiles
+1=/home/egil/Projects
+2=/home/egil
+3=/home/egil/.local
+4=/home/egil/.local/share/gnome-shell/extensions
+5=/home/egil/.local/share/gnome-shell
+6=/home/egil/.local/share

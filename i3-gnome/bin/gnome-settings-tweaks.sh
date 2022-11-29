@@ -22,9 +22,19 @@ gsettings set org.gnome.Terminal.Legacy.Settings menu-accelerator-enabled 	false
 # Adjust window resize with secondary button
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button 	true
 
+# Adjust gnome extensions
+gnome-extensions enable \
+	BingWallpaper@ineffable-gmail.com \
+	SwitchFocusType@romano.rgtti.com \
+	Vitals@CoreCoding.com \
+	dash-to-dock@micxgx.gmail.com \
+	tiling-assistant@leleat-on-github \
+	trayIconsReloaded@selfmade.pl \
+	user-theme@gnome-shell-extensions.gcampax.github.com
+
 # Adjust the themes on Gnome
 gsettings set org.gnome.desktop.interface gtk-theme 	 'Nordic-bluish-accent-v40'
-gsettings set org.gnome.desktop.interface icon-theme 	 'Papirus-Dark'
+gsettings set org.gnome.desktop.interface icon-theme 	 'Nordic'
 
 # Adjust the super+s key to toggle scaling
 gsettings set org.gnome.shell.keybindings toggle-overview '[]'
