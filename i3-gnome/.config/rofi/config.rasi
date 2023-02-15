@@ -1,5 +1,0 @@
-configuration {
-	show-icons:	true;
-	dpi:		125;
-}
-@theme "~/.config/rofi/themes/rounded-nord-dark.rasi"
