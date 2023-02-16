@@ -6,39 +6,22 @@ get_required_packages(){
 	bat
 	btop
 	colordiff
-	dconf-editor
 	dmenu
-	dunst
 	exa
 	feh
 	fontawesome-fonts
-	gnome-extensions-app
-	gnome-flashback
-	gnome-font-viewer
-	gnome-session-xsession
-	gnome-tweaks
 	google-noto-sans-mono-fonts
 	guake
-	gucharmap
 	htop
 	i3-gaps
 	jetbrains-mono-fonts
 	mc
 	mozilla-fira-sans-fonts
-	nemo
-	neofetch
 	net-tools
-	network-manager-applet
 	nss-tools
 	papirus-icon-theme
-	parcellite
-	pasystray
-	pavucontrol
-	picom
-	polybar
 	powerline
 	powerline-fonts
-	rofi
 	stow
 	tmux
 	tmux-powerline
@@ -46,7 +29,6 @@ get_required_packages(){
 	vim
 	vim-airline
 	vim-powerline
-	xorg-x11-xinit-session
 	EOF
 }
 
@@ -75,8 +57,6 @@ flatpak install -y \
 	com.hamrick.VueScan \
 	io.github.mimbrero.WhatsAppDesktop \
 	org.filezillaproject.Filezilla \
-	org.gnome.Calculator \
-	org.gnome.Calendar \
 	org.telegram.desktop
 
 # Link gnome-flashback to gdm pam file
@@ -86,7 +66,7 @@ flatpak install -y \
 #	cd -
 #fi
 
-stow -vvv --adopt -t ~/ term-setup i3-gnome
+stow -vvv --adopt -t ~/ term-setup i3
 
 gnome-settings-tweaks.sh
 

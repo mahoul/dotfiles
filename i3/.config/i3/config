@@ -28,22 +28,19 @@ bindsym $mod+Return exec alacritty
 
 # start web browser
 # %%hotkey: Start web browser %%
-bindsym $mod+Shift+Return exec gtk-launch $(xdg-settings get default-web-browser)
+bindsym $mod+Shift+Return exec flatpak run com.brave.Browser
 
 # launch command
 # %%hotkey: Run command %%
-bindsym $mod+F2 exec rofi -show run
-
-## %%hotkey: Show this list %%
-#bindsym $mod+a exec dmenu_hotkeys.py i3
+bindsym $mod+F2 exec xfrun4
 
 # launch app
 # %%hotkey: Show app launcher  %%
-bindsym $mod+space exec rofi -show drun
+bindsym $mod+space exec xfce4-popup-whiskermenu
 
 # launch window by name
 # %%hotkey: Show window selector %%
-bindsym $mod+Ctrl+space exec rofi -show window
+# bindsym $mod+Ctrl+space exec rofi -show window
 
 # launch key hints
 # %%hotkey: Show this list  %%
@@ -51,6 +48,10 @@ bindsym $mod+a exec dmenu_hotkeys.py i3
 
 # launch set-scale.sh
 bindsym $mod+s exec set-scale.sh
+
+# Toggle composition on/off
+# %%hotkey: Toggle composition on/off %%
+bindsym $mod+p exec toggle-picom.sh
 
 ########################
 # Window and Workspace navigation
@@ -96,12 +97,8 @@ bindsym $mod+Shift+Tab workspace prev_on_output
 # %%hotkey: Switch to previous workspace %%
 bindsym $mod+$alt+Left workspace prev
 
-# show scratchpad
-bindsym $mod+d scratchpad show
-#bindsym $mod+d [class="scratch"] scratchpad show
-
-#bindsym $mod+d scratchpad show
-#bindcode 133 [instance="scratch"] scratchpad show
+# Show the first scratchpad window
+bindsym $mod+d [class="scratch.*"] scratchpad show
 
 ####################################
 # Window and Workspace configuration
@@ -192,38 +189,39 @@ bindsym $mod+Shift+r restart
 
 # exit i3
 # %%hotkey: Logout %%
-bindsym $mod+Shift+e exec "/usr/bin/gnome-session-quit --logout"
+bindsym $mod+Shift+e exec "/usr/bin/xfce4-session-logout --logout"
 
 # reboot
 # %%hotkey: Reboot %%
-bindsym $mod+Shift+b exec "/usr/bin/gnome-session-quit --reboot"
+bindsym $mod+Shift+b exec "/usr/bin/xfce4-session-logout --reboot"
 
 # poweroff
 # %%hotkey: Poweroff %%
-bindsym $mod+Shift+p exec "/usr/bin/gnome-session-quit --power-off"
+bindsym $mod+Shift+p exec "/usr/bin/xfce4-session-logout --halt"
 
 # lock
 # %%hotkey: Lock %%
-bindsym $mod+Escape exec xdg-screensaver lock
+bindsym $mod+Escape exec "/usr/bin/xfce4-session-logout --lock"
 
 # suspend
 # %%hotkey: Suspend %%
-bindsym $mod+Shift+s exec systemctl suspend
+bindsym $mod+Shift+s exec "/usr/bin/xfce4-session-logout --suspend"
 
 ##########################
 # System management
 ##########################
 # Settings
 # %%hotkey: Show system settings %%
-bindsym $mod+c exec gnome-control-center
+bindsym $mod+c exec xfce4-settings-manager
 
+####
 # Bluetooth settings
 # %%hotkey: Show bluetooth settings %%
-bindsym $mod+b exec gnome-control-center bluetooth
+#bindsym $mod+b exec 
 
 # File browser
 # %%hotkey: Launch file browser %%
-bindsym $mod+Shift+n exec nemo
+bindsym $mod+Shift+n exec thunar
 
 # Toggle bar visibility
 bindsym $mod+i bar mode toggle
@@ -234,19 +232,14 @@ bindsym $mod+i bar mode toggle
 floating_maximum_size -1 x -1
 
 # Set windows classes to float
-for_window [class="Gedit"] border pixel 1
 for_window [class="PulseUI"] floating enable border normal
-for_window [class="Gnome-tweaks"] floating enable border pixel 1
 for_window [class="Synergy"] floating enable
-for_window [title="Volume Control"] floating enable resize set 1024 576
 for_window [class="zoom"] floating enable; exec stop-picom.sh
 for_window [class="Gnome-control-center"] floating enable
 for_window [title=".*noVNC.*"] floating enable
 for_window [title=".*Proxmox Console.*"] floating enable
-for_window [class="Dconf-editor"] floating enable border pixel 1
 for_window [class="Guake"] border pixel 1
-for_window [title="WhatsApp.*"] floating disable 
-for_window [title="YouTube.*"] floating disable
+
 for_window [class=".*jnlp.*"] floating enable
 for_window [class=".*icedteaweb.*"] floating enable
 for_window [class=".*IPMIView.*"] floating enable
@@ -255,16 +248,10 @@ for_window [class="OpenBoard"] fullscreen toggle
 for_window [class="Remote-viewer"] floating enable
 for_window [class="steam"] floating enable, resize set 1920 1080, move position -1 -1, border pixel 0
 
-for_window [class="scratch-notepad"] floating enable border pixel 1
-for_window [class="scratch-notepad"] resize set 845 1030
-
-for_window [class="scratch-pavucontrol"] floating enable 
-for_window [class="scratch-pavucontrol"] resize set 1024 576
-
-for_window [class="scratch-calculator"]  floating enable 
-for_window [class="scratch-calculator"]  resize set 360 406
-
-for_window [class="scratch.*"] move to scratchpad
+for_window [class="scratch.*"]       move scratchpad
+ 
+for_window [class="scratch-pavu"] resize set 1024 576
+for_window [class="scratch-nano"] resize set 1024 576
 
 ##########################
 # Window resize
@@ -345,30 +332,19 @@ client.background       #242424
 #font pango:Fira Sans Bold Italic 12
 font pango:Fira Sans Condensed Bold 16
 
-# Toggle composition on/off
-# %%hotkey: Toggle composition on/off %%
-bindsym $mod+p exec toggle-picom.sh
-
 #####################################
 # External programs launched with i3
 #####################################
-exec --no-startup-id nm-applet
-exec --no-startup-id guake
+#exec --no-startup-id nm-applet
+#exec --no-startup-id guake
 
 #exec --no-startup-id toggle-picom.sh
 
-exec --no-startup-id gnome-flashback
-exec_always --no-startup-id polybar.sh
+#exec --no-startup-id gnome-flashback
+#exec_always --no-startup-id polybar.sh
 
-exec --no-startup-id flatpak run com.github.alexkdeveloper.notepad 
-for_window [title="Notepad"] floating enable, move scratchpad
-#--class=scratch-notepad
-exec --no-startup-id flatpak run org.gnome.Calculator 
-for_window [title="Calculator"] floating enable, move scratchpad
-#--class=scratch-calculator
-exec --no-startup-id pavucontrol                      
-for_window [title="Volume Control"] floating enable, move scratchpad
-#--class=scratch-pavucontrol
+exec --no-startup-id pavucontrol      --class=scratch-pavu
+exec --no-startup-id alacritty        --class=scratch-nano,scratch-nano -e nano
 
 exec_always --no-startup-id feh --bg-fill 	.config/i3/SwedenOwl.jpg
 
@@ -377,17 +353,14 @@ exec_always --no-startup-id feh --bg-fill 	.config/i3/SwedenOwl.jpg
 #####################################
 #
 workspace 1 output DisplayPort-2
-workspace 2 output DisplayPort-4
-workspace 3 output DisplayPort-4
-workspace 4 output DisplayPort-4
-workspace 5 output DisplayPort-4
-
-
-assign [title=".*Thunderbird"] 2
+workspace 2 output DisplayPort-3
+workspace 3 output DisplayPort-3
+workspace 4 output DisplayPort-3
+workspace 5 output DisplayPort-3
+workspace 6 output DisplayPort-3
 
 assign [class="TelegramDesktop"] 2
-assign [class="Mattermost"] 2
 assign [title="*WhatsApp*"] 2
 
-assign [class="PulseUi"] 4
+assign [class="PulseUi"] 6
 
