@@ -1,5 +1,5 @@
-favorites=xfce4-web-browser.desktop,xfce4-mail-reader.desktop,xfce4-file-manager.desktop,xfce4-terminal-emulator.desktop,xfce-settings-manager.desktop,com.visualstudio.code.desktop
-recent=com.visualstudio.code.desktop,xfce4-web-browser.desktop,xfce-display-settings.desktop,xfce-settings-manager.desktop,com.brave.Browser.desktop,xfce4-settings-editor.desktop,xfce4-mime-settings.desktop,xfce-wmtweaks-settings.desktop
+favorites=xfce4-web-browser.desktop,xfce4-mail-reader.desktop,xfce4-file-manager.desktop,xfce4-terminal-emulator.desktop
+recent=xfce-settings-manager.desktop
 button-icon=org.xfce.panel.whiskermenu
 button-single-row=false
 show-button-title=false

@@ -68,6 +68,6 @@ flatpak install -y \
 
 stow -vvv --adopt -t ~/ term-setup i3
 
-gnome-settings-tweaks.sh
+#gnome-settings-tweaks.sh
 
 

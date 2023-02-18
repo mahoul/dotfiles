@@ -14,7 +14,7 @@
       <property name="plugin-ids" type="array">
         <value type="int" value="7"/>
         <value type="int" value="4"/>
-        <value type="int" value="5"/>
+        <value type="int" value="3"/>
         <value type="int" value="6"/>
         <value type="int" value="8"/>
         <value type="int" value="9"/>
@@ -23,23 +23,22 @@
         <value type="int" value="12"/>
         <value type="int" value="13"/>
         <value type="int" value="14"/>
-        <value type="int" value="15"/>
       </property>
     </property>
   </property>
   <property name="plugins" type="empty">
-    <property name="plugin-4" type="string" value="pager"/>
-    <property name="plugin-5" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
+    <property name="plugin-3" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="0"/>
     </property>
+    <property name="plugin-4" type="string" value="pager"/>
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
         <value type="string" value="clipman"/>
-        <value type="string" value="guake"/>
-        <value type="string" value="seapplet"/>
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
+        <value type="string" value="seapplet"/>
+        <value type="string" value="xfce4-power-manager"/>
       </property>
       <property name="known-items" type="array">
         <value type="string" value="dnfdragora-updater"/>
@@ -60,10 +59,5 @@
     </property>
     <property name="plugin-14" type="string" value="actions"/>
     <property name="plugin-7" type="string" value="whiskermenu"/>
-    <property name="plugin-15" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16765736231.desktop"/>
-      </property>
-    </property>
   </property>
 </channel>
