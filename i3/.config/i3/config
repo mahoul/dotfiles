@@ -189,19 +189,19 @@ bindsym $mod+Shift+r restart
 
 # exit i3
 # %%hotkey: Logout %%
-bindsym $mod+Shift+e exec "/usr/bin/xfce4-session-logout --logout"
+bindsym $mod+Shift+e exec "/usr/bin/xfce4-session-logout"
 
 # reboot
 # %%hotkey: Reboot %%
-bindsym $mod+Shift+b exec "/usr/bin/xfce4-session-logout --reboot"
+# bindsym $mod+Shift+b exec "/usr/bin/xfce4-session-logout --reboot"
 
 # poweroff
 # %%hotkey: Poweroff %%
-bindsym $mod+Shift+p exec "/usr/bin/xfce4-session-logout --halt"
+# bindsym $mod+Shift+p exec "/usr/bin/xfce4-session-logout --halt"
 
 # lock
 # %%hotkey: Lock %%
-bindsym $mod+Escape exec "/usr/bin/xfce4-session-logout --lock"
+bindsym $mod+Escape exec "/usr/bin/xfce4-screensaver-command --lock"
 
 # suspend
 # %%hotkey: Suspend %%
@@ -217,7 +217,7 @@ bindsym $mod+c exec xfce4-settings-manager
 ####
 # Bluetooth settings
 # %%hotkey: Show bluetooth settings %%
-#bindsym $mod+b exec 
+bindsym $mod+b exec blueman-manager
 
 # File browser
 # %%hotkey: Launch file browser %%
@@ -235,7 +235,8 @@ floating_maximum_size -1 x -1
 for_window [class="PulseUI"] floating enable border normal
 for_window [class="Synergy"] floating enable
 for_window [class="zoom"] floating enable; exec stop-picom.sh
-for_window [class="Gnome-control-center"] floating enable
+for_window [class="Xfce4-settings-manager"] floating enable
+for_window [class="Xfrun4"] floating enable
 for_window [title=".*noVNC.*"] floating enable
 for_window [title=".*Proxmox Console.*"] floating enable
 for_window [class="Guake"] border pixel 1
@@ -249,7 +250,7 @@ for_window [class="Remote-viewer"] floating enable
 for_window [class="steam"] floating enable, resize set 1920 1080, move position -1 -1, border pixel 0
 
 for_window [class="scratch.*"]       move scratchpad
- 
+
 for_window [class="scratch-pavu"] resize set 1024 576
 for_window [class="scratch-nano"] resize set 1024 576
 

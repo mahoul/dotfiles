@@ -29,6 +29,8 @@ get_required_packages(){
 	vim
 	vim-airline
 	vim-powerline
+	xdotool
+	xprop
 	EOF
 }
 
@@ -53,7 +55,6 @@ fi
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y \
 	com.brave.Browser \
-	com.github.alexkdeveloper.notepad \
 	com.hamrick.VueScan \
 	io.github.mimbrero.WhatsAppDesktop \
 	org.filezillaproject.Filezilla \
@@ -66,7 +67,7 @@ flatpak install -y \
 #	cd -
 #fi
 
-stow -vvv --adopt -t ~/ term-setup i3
+#stow -vvv --adopt -t ~/ term-setup i3
 
 #gnome-settings-tweaks.sh
 

@@ -5,7 +5,6 @@
     <property name="known_applications" type="array">
       <value type="string" value=""/>
       <value type="string" value="Guake"/>
-      <value type="string" value="org.freedesktop.problems.applet"/>
       <value type="string" value="seapplet"/>
     </property>
   </property>
