@@ -1,5 +1,5 @@
-favorites=xfce4-web-browser.desktop,xfce4-mail-reader.desktop,xfce4-file-manager.desktop,xfce4-terminal-emulator.desktop,xfce-settings-manager.desktop
-recent=xfce-settings-manager.desktop
+favorites=xfce4-web-browser.desktop,Alacritty.desktop,xfce4-file-manager.desktop,xfce-settings-manager.desktop,com.visualstudio.code.desktop
+recent=guake.desktop,io.github.mimbrero.WhatsAppDesktop.desktop,btop.desktop,com.visualstudio.code.desktop,com.brave.Browser.flextop.brave-agimnkijcaahngcdmfeangaknmldooml-Default.desktop,xfce4-notifyd-config.desktop,org.telegram.desktop.desktop,com.spotify.Client.desktop,system-config-printer.desktop,pulse.desktop
 button-icon=org.xfce.panel.whiskermenu
 button-single-row=false
 show-button-title=false

@@ -1,10 +1,12 @@
-# Dotfiles for configuration of i3, tmux and terminator
+# Dotfiles for configuration of i3, tmux, alacritty and XFCE
 
-## Required packages for Fedora
+## Required Groups Install for Fedora
 
-- network-manager-applet
-- blueberry
-- i3lock
-- dunst
-- feh
+Only XFCE is needed to be installed.
 
+## Sample installation
+
+```
+    $ time bash -x config-fedora.sh
+    $ sudo reboot
+```

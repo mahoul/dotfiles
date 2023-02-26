@@ -336,12 +336,8 @@ font pango:Fira Sans Condensed Bold 16
 #####################################
 # External programs launched with i3
 #####################################
-#exec --no-startup-id nm-applet
-#exec --no-startup-id guake
-
 #exec --no-startup-id toggle-picom.sh
 
-#exec --no-startup-id gnome-flashback
 #exec_always --no-startup-id polybar.sh
 
 exec --no-startup-id pavucontrol      --class=scratch-pavu
@@ -360,8 +356,8 @@ workspace 4 output DisplayPort-3
 workspace 5 output DisplayPort-3
 workspace 6 output DisplayPort-3
 
-assign [class="TelegramDesktop"] 2
-assign [title="*WhatsApp*"] 2
+assign [class="TelegramDesktop"] 1
+assign [title="*WhatsApp*"] 1
 
 assign [class="PulseUi"] 6
 

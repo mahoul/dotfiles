@@ -3,6 +3,7 @@
 get_required_packages(){
 	cat <<-EOF
 	alacritty
+	arandr
 	bat
 	btop
 	colordiff
@@ -10,18 +11,22 @@ get_required_packages(){
 	exa
 	feh
 	fontawesome-fonts
+	git
 	google-noto-sans-mono-fonts
 	guake
 	htop
 	i3-gaps
 	jetbrains-mono-fonts
+	kde-wallpapers
+	krb5-workstation
 	mc
 	mozilla-fira-sans-fonts
 	net-tools
+	nmap
 	nss-tools
-	papirus-icon-theme
 	powerline
 	powerline-fonts
+	virt-viewer
 	stow
 	tmux
 	tmux-powerline
@@ -29,6 +34,7 @@ get_required_packages(){
 	vim
 	vim-airline
 	vim-powerline
+	virt-viewer
 	xdotool
 	xprop
 	EOF
@@ -58,7 +64,14 @@ flatpak install -y \
 	com.hamrick.VueScan \
 	io.github.mimbrero.WhatsAppDesktop \
 	org.filezillaproject.Filezilla \
-	org.telegram.desktop
+	org.telegram.desktop \
+	com.spotify.Client \
+	org.remmina.Remmina \
+	us.zoom.Zoom \
+	org.flameshot.Flameshot \
+	com.visualstudio.code \
+	org.videolan.VLC
+	
 
 # Link gnome-flashback to gdm pam file
 #if [ ! -h /etc/pam.d/gnome-flashback ]; then
@@ -67,8 +80,6 @@ flatpak install -y \
 #	cd -
 #fi
 
-#stow -vvv --adopt -t ~/ term-setup i3
+stow -vvv --adopt -t ~/ term-setup i3
 
 #gnome-settings-tweaks.sh
-
-
