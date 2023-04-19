@@ -3,42 +3,30 @@
 get_required_packages(){
 	cat <<-EOF
 	alacritty
+	arandr
 	bat
 	btop
 	colordiff
-	dconf-editor
 	dmenu
-	dunst
 	exa
 	feh
 	fontawesome-fonts
-	gnome-extensions-app
-	gnome-flashback
-	gnome-font-viewer
-	gnome-session-xsession
-	gnome-tweaks
+	git
 	google-noto-sans-mono-fonts
 	guake
-	gucharmap
 	htop
 	i3-gaps
 	jetbrains-mono-fonts
+	kde-wallpapers
+	krb5-workstation
 	mc
 	mozilla-fira-sans-fonts
-	nemo
-	neofetch
 	net-tools
-	network-manager-applet
+	nmap
 	nss-tools
-	papirus-icon-theme
-	parcellite
-	pasystray
-	pavucontrol
-	picom
-	polybar
 	powerline
 	powerline-fonts
-	rofi
+	virt-viewer
 	stow
 	tmux
 	tmux-powerline
@@ -46,7 +34,9 @@ get_required_packages(){
 	vim
 	vim-airline
 	vim-powerline
-	xorg-x11-xinit-session
+	virt-viewer
+	xdotool
+	xprop
 	EOF
 }
 
@@ -71,13 +61,17 @@ fi
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y \
 	com.brave.Browser \
-	com.github.alexkdeveloper.notepad \
 	com.hamrick.VueScan \
 	io.github.mimbrero.WhatsAppDesktop \
 	org.filezillaproject.Filezilla \
-	org.gnome.Calculator \
-	org.gnome.Calendar \
-	org.telegram.desktop
+	org.telegram.desktop \
+	com.spotify.Client \
+	org.remmina.Remmina \
+	us.zoom.Zoom \
+	org.flameshot.Flameshot \
+	com.visualstudio.code \
+	org.videolan.VLC
+	
 
 # Link gnome-flashback to gdm pam file
 #if [ ! -h /etc/pam.d/gnome-flashback ]; then
@@ -86,8 +80,6 @@ flatpak install -y \
 #	cd -
 #fi
 
-stow -vvv --adopt -t ~/ term-setup i3-gnome
+stow -vvv --adopt -t ~/ term-setup i3
 
-gnome-settings-tweaks.sh
-
-
+#gnome-settings-tweaks.sh
