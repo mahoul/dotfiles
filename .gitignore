@@ -2,3 +2,6 @@ panels.ini
 *.log
 *.uuid
 *.swp
+.netrwhist
+icon-theme.cache
+*.rc
