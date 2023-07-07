@@ -28,7 +28,8 @@ bindsym $mod+Return exec alacritty
 
 # start web browser
 # %%hotkey: Start web browser %%
-bindsym $mod+Shift+Return exec flatpak run com.brave.Browser
+#bindsym $mod+Shift+Return exec flatpak run com.brave.Browser
+bindsym $mod+Shift+Return exec xdg-open http://portainer.pagaros.nl.priv:8080
 
 # launch command
 # %%hotkey: Run command %%
@@ -247,7 +248,11 @@ for_window [class=".*IPMIView.*"] floating enable
 for_window [title="XTermFloat"] floating enable
 for_window [class="OpenBoard"] fullscreen toggle
 for_window [class="Remote-viewer"] floating enable
-for_window [class="steam"] floating enable, resize set 1920 1080, move position -1 -1, border pixel 0
+for_window [class="steam"] floating enable, move position -1 -1, border pixel 0
+for_window [title=".*Steam.*"] floating enable, move position -1 -1, border pixel 0
+
+#for_window [class="steamwebhelper"] floating enable, resize set 2160 1350, move position -1 -1, border pixel 0
+for_window [class="steamwebhelper"] floating enable, move position -1 -1, border pixel 0
 
 for_window [class="scratch.*"]       move scratchpad
 
