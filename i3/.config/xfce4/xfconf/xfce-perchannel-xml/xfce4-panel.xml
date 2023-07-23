@@ -7,15 +7,17 @@
     <property name="dark-mode" type="bool" value="true"/>
     <property name="panel-1" type="empty">
       <property name="position" type="string" value="p=6;x=0;y=0"/>
-      <property name="length" type="uint" value="100"/>
+      <property name="length" type="double" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="icon-size" type="uint" value="24"/>
       <property name="size" type="uint" value="48"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="7"/>
-        <value type="int" value="4"/>
+        <value type="int" value="2"/>
         <value type="int" value="3"/>
         <value type="int" value="12"/>
+        <value type="int" value="5"/>
+        <value type="int" value="4"/>
         <value type="int" value="11"/>
         <value type="int" value="6"/>
         <value type="int" value="8"/>
@@ -26,6 +28,7 @@
         <value type="int" value="1"/>
       </property>
       <property name="output-name" type="string" value="Primary"/>
+      <property name="mode" type="uint" value="0"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -33,10 +36,31 @@
       <property name="expand" type="bool" value="true"/>
       <property name="style" type="uint" value="0"/>
     </property>
-    <property name="plugin-4" type="string" value="pager"/>
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="ethernet network connection “wired connection 2” active"/>
+        <value type="string" value="requesting a wi-fi network address for “kaiker013_5”…"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (85%)"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (84%)"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (63%)"/>
+        <value type="string" value="blueman-tray"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (52%)"/>
+        <value type="string" value="redshift-gtk"/>
+        <value type="string" value="wi-fi network connection “ziggo0849773” active: ziggo0849773 (70%)"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (48%)"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (49%)"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (60%)"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (51%)"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (46%)"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (53%)"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (57%)"/>
+        <value type="string" value="wi-fi network connection “kaiker013_5” active: kaiker013_5 (54%)"/>
+        <value type="string" value="wi-fi network connection “ziggo0849773” active: ziggo0849773 (62%)"/>
+        <value type="string" value="no network connection"/>
+        <value type="string" value="thunar"/>
+        <value type="string" value="wi-fi network connection “conchin013_2021” active: conchin013_2021 (45%)"/>
+        <value type="string" value="wi-fi network connection “conchin013_2021” active: conchin013_2021 (50%)"/>
         <value type="string" value="vlc"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="guake"/>
@@ -45,6 +69,11 @@
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="TeamViewer"/>
+        <value type="string" value="redshift"/>
+        <value type="string" value="steam"/>
+        <value type="string" value="remmina-icon"/>
+        <value type="string" value="Barrier"/>
         <value type="string" value="zoom"/>
         <value type="string" value="flameshot"/>
         <value type="string" value="whatsapp-desktop-linux1"/>
@@ -57,7 +86,8 @@
     <property name="plugin-8" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="chromium.instance2;spotify;vlc"/>
+      <property name="mpris-players" type="string" value="chromium.instance2;firefox.instance10465;firefox.instance11431;firefox.instance12775;firefox.instance17676;firefox.instance1866;firefox.instance2130;firefox.instance22764;firefox.instance2500;firefox.instance2660;firefox.instance2666;firefox.instance2908;firefox.instance2960;firefox.instance4200;firefox.instance4701;firefox.instance5132;firefox.instance5370;firefox.instance5446;firefox.instance5951;firefox.instance6045;firefox.instance7895;spotify;vlc"/>
+      <property name="known-players" type="string" value="Brave;Chrome;Firefox;Spotify;Vivaldi"/>
     </property>
     <property name="plugin-9" type="string" value="power-manager-plugin"/>
     <property name="plugin-10" type="string" value="notification-plugin"/>
@@ -65,7 +95,10 @@
       <property name="style" type="uint" value="0"/>
       <property name="expand" type="bool" value="true"/>
     </property>
-    <property name="plugin-12" type="string" value="clock"/>
+    <property name="plugin-12" type="string" value="clock">
+      <property name="mode" type="uint" value="2"/>
+      <property name="digital-layout" type="uint" value="2"/>
+    </property>
     <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
@@ -77,6 +110,13 @@
       </property>
     </property>
     <property name="plugin-1" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-2" type="string" value="i3-workspaces"/>
+    <property name="plugin-4" type="string" value="clock">
+      <property name="digital-layout" type="uint" value="3"/>
+    </property>
+    <property name="plugin-5" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
   </property>
